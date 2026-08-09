@@ -1,0 +1,49 @@
+.header {
+  padding-bottom: 1.75rem;
+  border-bottom: 1px solid var(--rule);
+}
+
+.title {
+  font-family: var(--font-serif);
+  font-weight: 600;
+  font-size: clamp(1.6rem, 4.5vw, 2.15rem);
+  line-height: 1.15;
+  letter-spacing: -0.01em;
+  margin: 1.1rem 0 0;
+  text-wrap: balance;
+  color: var(--ink);
+}
+
+.org {
+  margin: 0.6rem 0 0;
+  color: var(--ink-soft);
+  font-size: 1rem;
+  max-width: 60ch;
+}
+
+.metaRow {
+  display: flex;
+  align-items: center;
+  gap: 0.65rem;
+  margin-top: 0.75rem;
+  flex-wrap: wrap;
+}
+
+.date {
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  color: var(--ink-faint);
+}
+
+.tag {
+  display: inline-block;
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--accent-strong);
+  border: 1px solid color-mix(in srgb, var(--accent) 45%, transparent);
+  border-radius: 3px;
+  padding: 0.12rem 0.45rem;
+}

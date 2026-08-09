@@ -1,0 +1,63 @@
+.hero {
+  padding-bottom: 1.75rem;
+  border-bottom: 1px solid var(--rule);
+}
+
+.name {
+  font-family: var(--font-serif);
+  font-weight: 600;
+  font-size: clamp(2.25rem, 6vw, 3.1rem);
+  line-height: 1.05;
+  letter-spacing: -0.01em;
+  margin: 0;
+  text-wrap: balance;
+  color: var(--ink);
+}
+
+.tagline {
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.11em;
+  color: var(--accent);
+  margin: 0.6rem 0 0;
+}
+
+.summary {
+  max-width: 56ch;
+  margin: 1.05rem 0 0;
+  color: var(--ink-soft);
+  font-size: 1.02rem;
+  line-height: 1.6;
+}
+
+.contact {
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.35rem 0;
+  margin: 1.35rem 0 0;
+  padding: 0;
+  font-family: var(--font-mono);
+  font-size: 0.85rem;
+  color: var(--ink-soft);
+}
+.contact li {
+  display: flex;
+  align-items: center;
+}
+.contact li:not(:last-child)::after {
+  content: "·";
+  margin: 0 0.6rem;
+  color: var(--ink-faint);
+}
+.contact a {
+  color: var(--ink-soft);
+  text-decoration: none;
+  border-bottom: 1px solid var(--rule);
+}
+.contact a:hover {
+  color: var(--accent);
+  border-color: var(--accent);
+}

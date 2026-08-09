@@ -1,0 +1,21 @@
+.label {
+  display: flex;
+  align-items: baseline;
+  gap: 0.85rem;
+  margin: 0 0 1.15rem;
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+  color: var(--accent);
+  white-space: nowrap;
+}
+
+.label::after {
+  content: "";
+  flex: 1;
+  height: 1px;
+  background: var(--rule);
+  transform: translateY(1px);
+}

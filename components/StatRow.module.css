@@ -1,0 +1,44 @@
+.statRow {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1px;
+  margin: 1.5rem 0;
+  background: var(--rule-soft);
+  border: 1px solid var(--rule-soft);
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+.stat {
+  background: var(--paper-raised);
+  padding: 0.85rem 0.95rem;
+}
+
+.k {
+  display: block;
+  font-family: var(--font-mono);
+  font-size: 0.64rem;
+  text-transform: uppercase;
+  letter-spacing: 0.07em;
+  color: var(--ink-faint);
+  margin-bottom: 0.3rem;
+}
+
+.v {
+  display: block;
+  font-family: var(--font-mono);
+  font-variant-numeric: tabular-nums;
+  font-size: 1.18rem;
+  font-weight: 600;
+  color: var(--ink);
+}
+
+.accent {
+  color: var(--accent-strong);
+}
+
+@media (max-width: 560px) {
+  .statRow {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}

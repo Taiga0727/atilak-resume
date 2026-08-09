@@ -1,0 +1,40 @@
+.item {
+  margin-bottom: 1.1rem;
+}
+.item:last-child {
+  margin-bottom: 0;
+}
+
+.head {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.title {
+  font-family: var(--font-serif);
+  font-weight: 600;
+  font-size: 1.05rem;
+  margin: 0;
+  color: var(--ink);
+}
+
+.date {
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  color: var(--ink-faint);
+  white-space: nowrap;
+}
+
+.org {
+  margin: 0.15rem 0 0;
+  font-size: 0.92rem;
+  color: var(--ink-soft);
+}
+
+.note {
+  font-family: var(--font-mono);
+  font-variant-numeric: tabular-nums;
+}

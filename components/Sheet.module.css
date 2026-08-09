@@ -1,0 +1,5 @@
+.sheet {
+  max-width: 46rem;
+  margin: 0 auto;
+  padding: clamp(2rem, 6vw, 4.25rem) clamp(1.25rem, 5vw, 2.5rem) 5rem;
+}

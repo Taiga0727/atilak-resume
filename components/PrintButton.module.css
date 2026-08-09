@@ -1,0 +1,26 @@
+.printBtn {
+  position: fixed;
+  top: 1.25rem;
+  right: 1.25rem;
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--ink-soft);
+  background: var(--paper-raised);
+  border: 1px solid var(--rule);
+  border-radius: 4px;
+  padding: 0.5rem 0.8rem;
+  cursor: pointer;
+  box-shadow: var(--shadow);
+}
+.printBtn:hover {
+  color: var(--accent);
+  border-color: var(--accent);
+}
+
+@media print {
+  .printBtn {
+    display: none;
+  }
+}

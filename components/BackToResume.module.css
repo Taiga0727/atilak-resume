@@ -1,0 +1,11 @@
+.back {
+  display: inline-block;
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  color: var(--ink-soft);
+  text-decoration-color: color-mix(in srgb, var(--ink-soft) 40%, transparent);
+}
+.back:hover {
+  color: var(--accent);
+  text-decoration-color: var(--accent);
+}

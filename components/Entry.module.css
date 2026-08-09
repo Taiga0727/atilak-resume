@@ -1,0 +1,92 @@
+.entry {
+  margin-bottom: 1.6rem;
+  break-inside: avoid;
+}
+.entry:last-child {
+  margin-bottom: 0;
+}
+
+.entryHead {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.entryTitle {
+  font-family: var(--font-serif);
+  font-weight: 600;
+  font-size: 1.16rem;
+  margin: 0;
+  color: var(--ink);
+}
+
+.titleLink {
+  color: var(--accent-strong);
+  text-decoration-color: color-mix(in srgb, var(--accent) 45%, transparent);
+  text-underline-offset: 3px;
+}
+.titleLink:hover {
+  text-decoration-color: var(--accent);
+}
+
+.entryOrg {
+  margin: 0.15rem 0 0;
+  font-size: 0.92rem;
+  color: var(--ink-soft);
+}
+
+.entryDate {
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  color: var(--ink-faint);
+  white-space: nowrap;
+  padding-top: 0.2rem;
+  font-variant-numeric: tabular-nums;
+}
+
+.tag {
+  display: inline-block;
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--accent-strong);
+  border: 1px solid color-mix(in srgb, var(--accent) 45%, transparent);
+  border-radius: 3px;
+  padding: 0.12rem 0.45rem;
+  margin: 0.5rem 0 0;
+}
+
+.proofLine {
+  max-width: 62ch;
+  margin: 0.55rem 0 0;
+  font-family: var(--font-mono);
+  font-size: 0.86rem;
+  font-variant-numeric: tabular-nums;
+  color: var(--ink);
+}
+
+.bullets {
+  max-width: 62ch;
+  margin: 0.5rem 0 0;
+  padding-left: 1.1rem;
+  color: var(--ink-soft);
+  font-size: 0.93rem;
+}
+.bullets li {
+  margin-top: 0.3rem;
+}
+
+.caseStudyCue {
+  display: inline-block;
+  margin-top: 0.55rem;
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  color: var(--accent);
+}
+.caseStudyCue:hover {
+  color: var(--accent-strong);
+}

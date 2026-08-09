@@ -1,0 +1,27 @@
+.awards {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 0.45rem 1.1rem;
+}
+
+.yr {
+  font-family: var(--font-mono);
+  font-variant-numeric: tabular-nums;
+  font-size: 0.85rem;
+  color: var(--ink-faint);
+  padding-top: 0.05rem;
+}
+
+.desc {
+  color: var(--ink-soft);
+  font-size: 0.93rem;
+}
+
+.link {
+  color: var(--ink-soft);
+  text-decoration-color: color-mix(in srgb, var(--ink-soft) 40%, transparent);
+}
+.link:hover {
+  color: var(--accent);
+  text-decoration-color: var(--accent);
+}
