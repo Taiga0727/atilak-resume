@@ -17,6 +17,11 @@ export function Header({ profile }: { profile: Profile }) {
             {contact.github}
           </a>
         </li>
+        <li>
+          <a href={contact.linkedinUrl} target="_blank" rel="noopener noreferrer">
+            {contact.linkedin}
+          </a>
+        </li>
         <li>{contact.phone}</li>
         <li>{contact.location}</li>
       </ul>

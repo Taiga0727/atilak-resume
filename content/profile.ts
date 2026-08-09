@@ -12,6 +12,8 @@ export const profile: Profile = {
     email: "atilak.work@gmail.com",
     github: "github.com/Taiga0727",
     githubUrl: "https://github.com/Taiga0727",
+    linkedin: "LinkedIn",
+    linkedinUrl: "https://www.linkedin.com/in/atilak-modetad-95b727331/",
     phone: "094 054 8091",
     location: "Bangkok, Thailand",
   },

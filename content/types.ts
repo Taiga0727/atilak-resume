@@ -75,6 +75,8 @@ export interface Profile {
     email: string;
     github: string;
     githubUrl: string;
+    linkedin: string;
+    linkedinUrl: string;
     phone: string;
     location: string;
   };

@@ -90,3 +90,12 @@
 .caseStudyCue:hover {
   color: var(--accent-strong);
 }
+
+@media print {
+  .entry {
+    margin-bottom: 1.05rem;
+  }
+  .caseStudyCue {
+    display: none;
+  }
+}

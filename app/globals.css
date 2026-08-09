@@ -80,6 +80,11 @@ button:focus-visible {
 }
 
 @media print {
+  @page {
+    size: A4;
+    margin: 14mm 16mm;
+  }
+
   :root {
     --paper: #ffffff;
     --paper-raised: #ffffff;
@@ -91,6 +96,14 @@ button:focus-visible {
     --accent: #14607d;
     --accent-strong: #0e4c63;
     --shadow: none;
+  }
+
+  html {
+    font-size: 13.5px;
+  }
+
+  body {
+    line-height: 1.42;
   }
 
   a {
