@@ -7,18 +7,20 @@ const percent = (value: string): number | null => {
   return match ? Number(match[1]) : null;
 };
 
-export function MetricsTable({ rows }: { rows: MetricRow[] }) {
+export function MetricsTable({ rows, bars = false }: { rows: MetricRow[]; bars?: boolean }) {
   return (
     <div className={styles.tableWrap}>
-      <table className={styles.results}>
+      <table className={`${styles.results} ${bars ? styles.withBars : ""}`}>
         <thead>
           <tr>
             <th>Metric</th>
             <th className={styles.before}>Before</th>
             <th className={styles.after}>After</th>
-            <th className={styles.barHead}>
-              <span className={styles.srOnly}>Before and after, drawn as bars</span>
-            </th>
+            {bars && (
+              <th className={styles.barHead}>
+                <span className={styles.srOnly}>Before and after, drawn as bars</span>
+              </th>
+            )}
           </tr>
         </thead>
         <tbody>
@@ -31,14 +33,16 @@ export function MetricsTable({ rows }: { rows: MetricRow[] }) {
                 <td>{row.metric}</td>
                 <td className={styles.before}>{row.before}</td>
                 <td className={styles.after}>{row.after}</td>
-                <td className={styles.barCell} aria-hidden="true">
-                  {showBars && (
-                    <>
-                      <span className={styles.barBefore} style={{ width: `${before}%` }} />
-                      <span className={styles.barAfter} style={{ width: `${after}%` }} />
-                    </>
-                  )}
-                </td>
+                {bars && (
+                  <td className={styles.barCell} aria-hidden="true">
+                    {showBars && (
+                      <>
+                        <span className={styles.barBefore} style={{ width: `${before}%` }} />
+                        <span className={styles.barAfter} style={{ width: `${after}%` }} />
+                      </>
+                    )}
+                  </td>
+                )}
               </tr>
             );
           })}

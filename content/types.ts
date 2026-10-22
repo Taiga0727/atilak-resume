@@ -34,6 +34,8 @@ export type EntryKind = "publication" | "experience" | "project";
 export interface WorkEntryDetail {
   stats?: Stat[];
   metricsTable?: MetricRow[];
+  /** Draw before/after bars next to the metrics table. Off unless the figures are settled. */
+  metricBars?: boolean;
   sections: DetailSection[];
   links?: ExternalLink[];
 }

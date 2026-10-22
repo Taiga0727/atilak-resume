@@ -8,7 +8,7 @@ export function DetailBody({ detail }: { detail: WorkEntryDetail }) {
   return (
     <div className={styles.body}>
       {detail.stats && <StatRow stats={detail.stats} />}
-      {detail.metricsTable && <MetricsTable rows={detail.metricsTable} />}
+      {detail.metricsTable && <MetricsTable rows={detail.metricsTable} bars={detail.metricBars} />}
 
       {detail.sections.map((section) => (
         <section className={styles.section} key={section.heading ?? section.paragraphs[0]}>

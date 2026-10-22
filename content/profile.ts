@@ -26,7 +26,7 @@ export const profile: Profile = {
   highlights: [
     { value: "1st author", label: "ICCI 2025 paper, published in IEEE Xplore" },
     { value: "95.22%", label: "wound-image accuracy with a 49% smaller model" },
-    { value: "99.52%", label: "heritage-damage accuracy, up from 90.08%" },
+    { value: "−72%", label: "point-cloud size on a real 5.49M-point heritage scan" },
     { value: "2nd Runner-Up", label: "NASA Space Apps 2024, Galactic" },
   ],
 
@@ -147,12 +147,6 @@ export const profile: Profile = {
       badge: "Independent contribution",
       homeProofLine:
         "Overall accuracy 90.08% → 99.52% · Crack IoU → 83.25% · Spalling IoU → 97.28% · Decay IoU → 98.43%",
-      homeStats: [
-        { label: "overall accuracy", value: "90.08% → 99.52%", accent: true },
-        { label: "crack IoU", value: "78.25% → 83.25%" },
-        { label: "spalling IoU", value: "89.34% → 97.28%" },
-        { label: "decay IoU", value: "54.58% → 98.43%" },
-      ],
       homeBullets: [
         "Independently designed and built a multi-view 3D→2D rendering and consensus-classification pipeline, then rewrote the renderer around EWA (Elliptical Weighted Average) surface splatting to close rendering gaps at oblique camera angles.",
         "Also built, independently, a point-cloud simplification pipeline cutting a real 5.49M-point heritage scan to 1.53M points (−72%) while preserving damage-relevant detail.",
