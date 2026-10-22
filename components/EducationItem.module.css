@@ -38,3 +38,9 @@
   font-family: var(--font-mono);
   font-variant-numeric: tabular-nums;
 }
+
+@media print {
+  .item {
+    margin-bottom: 0.6rem;
+  }
+}

@@ -25,3 +25,13 @@
   color: var(--accent);
   text-decoration-color: var(--accent);
 }
+
+@media print {
+  .awards {
+    gap: 0.2rem 1rem;
+  }
+
+  .desc {
+    font-size: 0.88rem;
+  }
+}

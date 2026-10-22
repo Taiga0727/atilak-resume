@@ -1,36 +1,39 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Atilak Modetad — résumé site
 
-## Getting Started
+Live: <https://atilak-resume.vercel.app>
 
-First, run the development server:
+A one-page résumé with linked case studies, built as a static Next.js site. One typed data file drives every page; the layout works from phone to desktop, follows the system light or dark theme, and prints to two A4 pages.
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+## What it has
+
+- **One source of truth.** [`content/profile.ts`](content/profile.ts) holds all content, typed by [`content/types.ts`](content/types.ts); pages and components only render it.
+- **Résumé page.** Header with highlights, then publication, experience, projects, education, skills and awards. Each entry has metric chips, one or two bullets, a pipeline strip, tool chips and links to code or paper.
+- **Case studies.** Stat tiles, before/after bars for metrics, step diagrams and plain-text sections for the entries that have one.
+- **Print.** The *Print / Save PDF* button uses an A4 stylesheet: smaller base size, link URLs written out, space-hungry visuals hidden.
+- **Social card.** [`app/opengraph-image.tsx`](app/opengraph-image.tsx) generates the preview image for shared links.
+
+## Stack
+
+Next.js 16 (App Router, statically prerendered) · React 19 · TypeScript · CSS Modules · local fonts through `next/font` · hosted on Vercel. The only client component is the print button.
+
+## Structure
+
+```
+app/          routes (/, /publication/[slug], /experience/[slug], /projects/[slug]), global CSS, social card
+components/   presentational components, each with its CSS Module
+content/      profile.ts (the content) and types.ts (its schema)
+public/       resume-v1.html, an earlier static version kept for reference
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Run
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+```bash
+npm install
+npm run dev        # http://localhost:3000
+npm run build && npm run start
+npm run lint
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## Edit the content
 
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Change [`content/profile.ts`](content/profile.ts). An entry takes `homeStats` (metric chips), `homeBullets` (one or two résumé bullets), `homeFlow` (pipeline strip labels), `stack` (tool chips), `links`, and, when `linked` is true, a `detail` page with `stats`, `metricsTable`, `sections` (each may carry a `flow` diagram) and `links`.

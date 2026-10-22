@@ -7,7 +7,7 @@
   width: 100%;
   border-collapse: collapse;
   font-size: 0.9rem;
-  min-width: 420px;
+  min-width: 520px;
 }
 
 .results th,
@@ -47,4 +47,40 @@
 .after {
   color: var(--accent-strong);
   font-weight: 600;
+}
+
+.results .barHead,
+.results .barCell {
+  width: 34%;
+  padding-left: 1.4rem;
+  text-align: left;
+}
+
+.barBefore,
+.barAfter {
+  display: block;
+  height: 5px;
+  border-radius: 2px;
+}
+.barBefore {
+  margin-bottom: 3px;
+  background: var(--rule);
+}
+.barAfter {
+  background: var(--accent);
+}
+
+.srOnly {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+}
+
+@media print {
+  .results .barBefore {
+    background: #bbbbbb;
+  }
 }

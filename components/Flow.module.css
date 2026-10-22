@@ -1,0 +1,103 @@
+.flow {
+  list-style: none;
+  display: grid;
+  grid-template-columns: repeat(var(--steps), minmax(0, 1fr));
+  gap: 1.1rem;
+  margin: 1.1rem 0 0;
+  padding: 0;
+}
+
+.step {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 0.28rem;
+  padding: 0.55rem 0.65rem;
+  border: 1px solid var(--rule);
+  border-radius: 4px;
+  background: var(--paper-raised);
+}
+
+.step:not(:last-child)::after {
+  content: "→";
+  position: absolute;
+  top: 50%;
+  right: -1.02rem;
+  width: 0.9rem;
+  transform: translateY(-50%);
+  text-align: center;
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  color: var(--accent);
+}
+
+.step:last-child {
+  border-color: color-mix(in srgb, var(--accent) 55%, transparent);
+}
+.step:last-child .label {
+  color: var(--accent-strong);
+}
+
+.label {
+  font-family: var(--font-mono);
+  font-size: 0.74rem;
+  font-weight: 600;
+  line-height: 1.3;
+  color: var(--ink);
+  overflow-wrap: anywhere;
+}
+
+.note {
+  font-size: 0.76rem;
+  line-height: 1.4;
+  color: var(--ink-soft);
+}
+
+.compact {
+  gap: 1rem;
+  margin-top: 0.8rem;
+}
+.compact .step {
+  padding: 0.35rem 0.5rem;
+}
+.compact .label {
+  font-size: 0.68rem;
+  font-weight: 500;
+}
+
+@media (max-width: 640px) {
+  .flow {
+    grid-template-columns: 1fr;
+    gap: 1.15rem;
+  }
+
+  .step:not(:last-child)::after {
+    content: "↓";
+    top: auto;
+    right: auto;
+    bottom: -1.1rem;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+}
+
+@media print {
+  .flow {
+    gap: 0.9rem;
+    margin-top: 0.6rem;
+    break-inside: avoid;
+  }
+
+  .step {
+    padding: 0.3rem 0.4rem;
+    border-color: var(--rule);
+  }
+
+  .label {
+    font-size: 0.66rem;
+  }
+
+  .note {
+    font-size: 0.68rem;
+  }
+}

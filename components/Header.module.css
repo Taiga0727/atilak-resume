@@ -61,3 +61,9 @@
   color: var(--accent);
   border-color: var(--accent);
 }
+
+@media print {
+  .summary {
+    max-width: 92ch;
+  }
+}

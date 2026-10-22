@@ -1,5 +1,10 @@
 import type { Profile } from "./types";
 
+const GITHUB = "https://github.com/Taiga0727";
+const IEEE = "https://ieeexplore.ieee.org/document/10987261";
+const RESEARCHGATE =
+  "https://www.researchgate.net/publication/391693610_Knowledge_Distillation_Using_Entropy-Guided_Dynamic_Parameter_Transfer_for_Wound_Image_Classification";
+
 export const profile: Profile = {
   identity: {
     name: "Atilak Modetad",
@@ -18,6 +23,13 @@ export const profile: Profile = {
     location: "Bangkok, Thailand",
   },
 
+  highlights: [
+    { value: "1st author", label: "ICCI 2025 paper, published in IEEE Xplore" },
+    { value: "95.22%", label: "wound-image accuracy with a 49% smaller model" },
+    { value: "99.52%", label: "heritage-damage accuracy, up from 90.08%" },
+    { value: "2nd Runner-Up", label: "NASA Space Apps 2024, Galactic" },
+  ],
+
   publication: {
     kind: "publication",
     slug: "knowledge-distillation-wound-classification",
@@ -27,8 +39,27 @@ export const profile: Profile = {
     dateLabel: "Apr 2025",
     homeProofLine:
       "95.22% accuracy · 42.7 MB (−49%) · 2.7 ms (−36%) · +4.66 pts vs. baseline KD",
+    homeStats: [
+      { label: "accuracy", value: "95.22%", accent: true },
+      { label: "model size", value: "42.7 MB (−49%)" },
+      { label: "inference", value: "2.7 ms (−36%)" },
+      { label: "vs. baseline KD", value: "+4.66 pts", accent: true },
+    ],
     homeBullets: [
-      "Designed EGATS and EGAAS — entropy-guided adaptive scaling for a knowledge-distillation temperature and loss-balance weight — plus a contrastive feature-alignment term, to compress a ResNet-34 wound classifier into a ResNet-18 student without the usual accuracy trade-off.",
+      "Designed entropy-guided temperature (EGATS) and loss-balance (EGAAS) scaling that adapts knowledge distillation to each sample's uncertainty, plus a feature-alignment term, to compress a ResNet-34 wound classifier into a ResNet-18 student.",
+      "Built the full pipeline (augmentation, fastai teacher, pruning and layer-truncation baselines, evaluation) and released the code and trained models.",
+    ],
+    homeFlow: [
+      "ResNet-34 teacher",
+      "Entropy per sample",
+      "Adaptive T and α",
+      "Distillation loss",
+      "ResNet-18 student",
+    ],
+    stack: ["PyTorch", "fastai", "Albumentations", "Knowledge distillation"],
+    links: [
+      { label: "IEEE Xplore", href: IEEE },
+      { label: "Code", href: `${GITHUB}/entropy-guided-kd-wound-classification` },
     ],
     linked: true,
     detail: {
@@ -64,9 +95,31 @@ export const profile: Profile = {
           ],
         },
         {
+          heading: "How it fits together",
+          paragraphs: [
+            "For every training image, the teacher's own uncertainty sets both knobs at once.",
+          ],
+          flow: [
+            { label: "ResNet-34 teacher", note: "Predicts class probabilities for each training image" },
+            { label: "Entropy per sample", note: "How uncertain is the teacher about this image?" },
+            { label: "Adaptive T and α", note: "T from entropy (1 to 5); α = σ(2 − H)" },
+            {
+              label: "Distillation loss",
+              note: "α·KL at temperature T + (1 − α)·cross-entropy + 0.1·alignment",
+            },
+            { label: "ResNet-18 student", note: "42.7 MB, 49% smaller than the teacher" },
+          ],
+        },
+        {
           heading: "Dataset & setup",
           paragraphs: [
             "Teacher: ResNet-34, 20 epochs, LR 0.0015. Student: ResNet-18, 70 epochs, LR 0.001. Trained and evaluated on a Kaggle wound-image dataset spanning 9 classes — burns, bruises, cuts, venous wounds, abrasions, surgical wounds, pressure wounds, diabetic wounds, lacerations — balanced to 100 images per class (900 total), resized to 224×224, augmented with 9 Albumentations transform types, split 80/10/10.",
+          ],
+        },
+        {
+          heading: "Code and reproducibility",
+          paragraphs: [
+            "The notebook, the entropy-guided loss, a manifest of the 900-image subset and the five trained models (release assets with SHA-256 checksums) are public on GitHub, together with notes on the limits of the evaluation.",
           ],
         },
         {
@@ -77,11 +130,9 @@ export const profile: Profile = {
         },
       ],
       links: [
-        {
-          label: "ResearchGate",
-          href: "https://www.researchgate.net/publication/391693610_Knowledge_Distillation_Using_Entropy-Guided_Dynamic_Parameter_Transfer_for_Wound_Image_Classification",
-        },
-        { label: "IEEE Xplore", href: "https://ieeexplore.ieee.org/document/10987261" },
+        { label: "IEEE Xplore", href: IEEE },
+        { label: "ResearchGate", href: RESEARCHGATE },
+        { label: "Code on GitHub", href: `${GITHUB}/entropy-guided-kd-wound-classification` },
       ],
     },
   },
@@ -96,10 +147,24 @@ export const profile: Profile = {
       badge: "Independent contribution",
       homeProofLine:
         "Overall accuracy 90.08% → 99.52% · Crack IoU → 83.25% · Spalling IoU → 97.28% · Decay IoU → 98.43%",
+      homeStats: [
+        { label: "overall accuracy", value: "90.08% → 99.52%", accent: true },
+        { label: "crack IoU", value: "78.25% → 83.25%" },
+        { label: "spalling IoU", value: "89.34% → 97.28%" },
+        { label: "decay IoU", value: "54.58% → 98.43%" },
+      ],
       homeBullets: [
         "Independently designed and built a multi-view 3D→2D rendering and consensus-classification pipeline, then rewrote the renderer around EWA (Elliptical Weighted Average) surface splatting to close rendering gaps at oblique camera angles.",
         "Also built, independently, a point-cloud simplification pipeline cutting a real 5.49M-point heritage scan to 1.53M points (−72%) while preserving damage-relevant detail.",
       ],
+      homeFlow: [
+        "TLS point cloud",
+        "32 camera views",
+        "EWA splatting render",
+        "Per-pixel consensus",
+        "Damage labels",
+      ],
+      stack: ["Python", "Open3D", "PyVista", "DBSCAN / HDBSCAN", "Google Colab GPU"],
       linked: true,
       detail: {
         metricsTable: [
@@ -127,6 +192,13 @@ export const profile: Profile = {
             paragraphs: [
               "The renderer projects the point cloud into 2D from 32 camera views, then reaches a per-pixel consensus across views to classify damage. The original isotropic point-splat renderer left visible gaps at oblique camera angles. Rewrote it around EWA (Elliptical Weighted Average) surface splatting — anisotropic covariance-based projection adapted from the same math family used in 3D Gaussian Splatting (Zwicker et al., 2001) — applied as a closed-form, single-pass render, with no training involved. Result: the rate of surface points never seen by any camera view dropped to 0.0048%, and every IoU metric improved substantially (see table).",
             ],
+            flow: [
+              { label: "TLS point cloud", note: "Real scans of Ayutthaya-era temples, some over 5M points" },
+              { label: "32 camera views", note: "The cloud is projected into 2D from 32 viewpoints" },
+              { label: "EWA splatting render", note: "Anisotropic, covariance-based projection in one pass" },
+              { label: "Per-pixel consensus", note: "The views are combined to classify each surface point" },
+              { label: "Damage labels", note: "Crack, spalling and decay" },
+            ],
           },
           {
             heading: "Real bugs found and fixed",
@@ -146,12 +218,23 @@ export const profile: Profile = {
             paragraphs: [
               "Built independently: density-based clustering (DBSCAN/HDBSCAN) to segment the point cloud, curvature/roughness saliency scoring to identify which points carry structurally important detail, then adaptive voxel downsampling applied only to the non-salient points. On a real 5.49-million-point scan, this cut the cloud to 1.53 million points — a 72.14% reduction — while preserving the fine detail that damage detection depends on.",
             ],
+            flow: [
+              { label: "5.49M-point scan", note: "A real heritage scan" },
+              { label: "DBSCAN / HDBSCAN", note: "Density-based segmentation of the cloud" },
+              { label: "Saliency scoring", note: "Curvature and roughness mark the points that matter" },
+              { label: "Adaptive voxel downsampling", note: "Applied only to the non-salient points" },
+              { label: "1.53M points", note: "−72.14%, damage-relevant detail kept" },
+            ],
           },
           {
             heading: "A documented decision not to pursue 3D Gaussian Splatting",
             paragraphs: [
               "Evaluated whether 3D Gaussian Splatting could be used directly for the semantic-segmentation task itself (not just as the projection math EWA borrows from). Root-caused four compounding bugs in a teammate's existing 3DGS implementation, scoped what a real fix would take, and made a reasoned decision not to pursue it — documented with the actual reasoning rather than left as an unexplained dead end.",
             ],
+          },
+          {
+            heading: "Code",
+            paragraphs: ["Private research code; it is not published on GitHub."],
           },
         ],
       },
@@ -166,28 +249,57 @@ export const profile: Profile = {
       org: "Super AI Engineer Season 6, Level 1 Hackathon",
       dateLabel: "2026",
       homeProofLine: "BGE-M3 embeddings · hybrid BM25 + dense retrieval (RRF) · PyThaiNLP",
-      homeBullets: [
-        "Built a Thai-language retrieval-augmented QA system with hybrid retrieval and edge-case-aware prompting.",
+      homeStats: [
+        { label: "questions", value: "100 × 10 choices" },
+        { label: "knowledge base", value: "118 docs · 857 chunks" },
+        { label: "intent routes", value: "5" },
       ],
+      homeBullets: [
+        "Built an intent-aware hybrid retrieval pipeline for Thai product Q&A: BGE-M3 dense search and BM25 over PyThaiNLP tokens, fused with intent-weighted Reciprocal Rank Fusion.",
+        "Engineered forced retrieval for every product named in a question, and prompts that answer \"not in the knowledge base\" instead of guessing.",
+      ],
+      homeFlow: [
+        "Question + 10 choices",
+        "Intent routing",
+        "BGE-M3 + BM25",
+        "Fusion + forced retrieval",
+        "LLM answer",
+      ],
+      stack: ["BGE-M3", "BM25", "PyThaiNLP", "RRF", "OpenThaiGPT (ThaiLLM API)", "Google Colab"],
+      links: [{ label: "Code", href: `${GITHUB}/fahmai-rag-intent-aware` }],
       linked: true,
       detail: {
         sections: [
           {
             heading: "The task",
             paragraphs: [
-              "Answer Thai-language customer-service questions about a fictional retailer from a knowledge base of about 135 Markdown documents, using a Thai-capable LLM — including correctly recognizing when a question has no answer in the knowledge base at all.",
+              "Answer 100 Thai multiple-choice questions about an online electronics shop, using only its knowledge base of 118 Markdown documents (857 chunks) and a Thai LLM through the ThaiLLM API. Each question has 10 choices; choice 9 means \"not in the knowledge base\" and choice 10 \"unrelated to the shop\", so the system also has to recognize when no answer exists.",
+            ],
+          },
+          {
+            heading: "The pipeline",
+            paragraphs: [
+              "Questions differ in kind — a single spec lookup, a comparison of products, a price or points calculation that needs a policy file, a long story with the real question buried at the end — so one retriever is not enough.",
+            ],
+            flow: [
+              { label: "Question + 10 choices", note: "100 Thai questions per run" },
+              { label: "Intent routing", note: "Rules pick one of 5 intents and set the context size" },
+              { label: "Hybrid retrieval", note: "BGE-M3 dense search and BM25 over PyThaiNLP tokens, top 20 each" },
+              { label: "Fusion + forced retrieval", note: "Intent-weighted RRF; every named product gets a place" },
+              { label: "LLM answer", note: "OpenThaiGPT; answer parsed to 1–10, one retry, default 9" },
             ],
           },
           {
             heading: "What changed from the starter kit",
             paragraphs: [
               "The provided baseline used a weaker multilingual embedding model, naive fixed-length chunking, and no reranking. Swapped in BAAI/bge-m3 — a stronger multilingual embedding model with solid Thai support — and fused BM25 keyword retrieval (tokenized with PyThaiNLP) with dense retrieval using Reciprocal Rank Fusion, so exact matches (like product codes) and semantic matches both surface reliably.",
+              "Four helper functions (LLM call, BM25 and dense retrieval, answer parsing) started from the starter kit; the intent classifier, query decomposition, forced retrieval, prompt modes, run loop and debug helpers were written from scratch.",
             ],
           },
           {
             heading: "Query-adaptive weighting & edge cases",
             paragraphs: [
-              "Weighted BM25 more heavily for queries that look like product-code lookups, and engineered prompts specifically to make the model answer 'not in knowledge base' or 'not related' correctly instead of guessing — the failure mode that hurts naive RAG systems most on edge-case questions.",
+              "Fusion weights depend on the intent, so product-code lookups lean on BM25 and paraphrased questions on dense search. Every product named in a question is force-retrieved through a reverse index, which is what makes comparison questions answerable. Prompts are engineered to make the model answer \"not in knowledge base\" or \"not related\" correctly instead of guessing — the failure mode that hurts naive RAG systems most on edge-case questions.",
             ],
           },
           {
@@ -197,7 +309,55 @@ export const profile: Profile = {
             ],
           },
         ],
+        links: [{ label: "Code on GitHub", href: `${GITHUB}/fahmai-rag-intent-aware` }],
       },
+    },
+    {
+      kind: "project",
+      slug: "thai-data-storytelling",
+      title: "Thai Open-Data Storytelling",
+      org: "Super AI Engineer Season 6, Mini-hackathon",
+      dateLabel: "Mar 2026",
+      homeProofLine: "Fire risk · university enrollment · rainfall and flood risk",
+      homeStats: [
+        { label: "open datasets", value: "3" },
+        { label: "provinces scored", value: "65" },
+        { label: "student records (2025)", value: "2.0M" },
+      ],
+      homeBullets: [
+        "Turned three Thai open datasets — fire statistics, university enrollment, rainfall and flood risk — into question-driven analyses with tiered recommendations and dashboard-ready CSVs.",
+        "Scored fire risk per province on a frequency × damage plane (23 of 65 critical); factories were the strongest predictor of severity not built into the score (r = 0.73).",
+      ],
+      homeFlow: [
+        "THackle open data",
+        "Audit and clean",
+        "Features and scores",
+        "Question-driven analysis",
+        "Recommendation + dashboard CSV",
+      ],
+      stack: ["pandas", "Plotly", "Looker Studio-ready CSV", "Google Colab"],
+      links: [{ label: "Code", href: `${GITHUB}/thai-data-storytelling-hackathon` }],
+      linked: false,
+    },
+    {
+      kind: "project",
+      slug: "ml-learning-notes",
+      title: "Point-Cloud and Classical-ML Experiments",
+      org: "Coursework and self-study",
+      dateLabel: "Self-study",
+      homeProofLine: "DGCNN on ModelNet40 · SVM on spider vs scorpion photos",
+      homeStats: [
+        { label: "ModelNet40 meshes", value: "12,311" },
+        { label: "DGCNN, 1 epoch", value: "67.1%" },
+        { label: "RBF SVM, optimistic", value: "89.3%" },
+      ],
+      homeBullets: [
+        "Trained a Dynamic Graph CNN from scratch on 512-point clouds sampled from ModelNet40, and repaired the dataset's malformed OFF headers so Open3D could read them.",
+        "Compared linear and RBF SVMs on pixel features of spider and scorpion photos, and documented why the result is optimistic: augmentation before the train/test split.",
+      ],
+      stack: ["PyTorch", "Open3D", "scikit-learn", "Albumentations"],
+      links: [{ label: "Code", href: `${GITHUB}/ml-learning-notes` }],
+      linked: false,
     },
     {
       kind: "project",
@@ -207,6 +367,10 @@ export const profile: Profile = {
       dateLabel: "Oct 2024",
       badge: "Galactic 2nd Runner-Up",
       homeProofLine: "Presenter, Design, Research · 7-person team · Galactic 2nd Runner-Up",
+      homeStats: [
+        { label: "role", value: "Presenter · Design · Research" },
+        { label: "team", value: "7 people" },
+      ],
       homeBullets: [
         "Presented, shaped the design concept, and researched the astronaut-wellbeing domain behind a companion-app game; a teammate built the Unity/C# implementation.",
       ],
@@ -242,6 +406,7 @@ export const profile: Profile = {
       dateLabel: "2024",
       badge: "Best Excellent Idea, ฿5,000",
       homeProofLine: "Idea/pitch only — not implemented",
+      homeStats: [{ label: "not implemented", value: "Idea / pitch only" }],
       homeBullets: [
         "Conceived and pitched, solo, a camera+AI pest/animal-detection concept alerting through Home Assistant.",
       ],
@@ -268,9 +433,11 @@ export const profile: Profile = {
       category: "ML & Vision",
       items: [
         "PyTorch",
+        "fastai",
         "scikit-learn",
         "Open3D",
         "PyVista",
+        "Albumentations",
         "PointNet / PointNet++",
         "DGCNN",
         "Knowledge Distillation",
@@ -279,6 +446,10 @@ export const profile: Profile = {
     {
       category: "Retrieval & NLP",
       items: ["Sentence-Transformers (BGE-M3)", "Hybrid BM25 + Dense Retrieval", "PyThaiNLP"],
+    },
+    {
+      category: "Data & Visualization",
+      items: ["pandas", "NumPy", "Matplotlib", "Seaborn", "Plotly"],
     },
     {
       category: "Systems & Tools",

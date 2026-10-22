@@ -18,10 +18,21 @@ const jbMono = localFont({
   display: "swap",
 });
 
+const title = "Atilak Modetad — Résumé";
+const description =
+  "Résumé for Atilak Modetad — computer vision, 3D point clouds, and applied ML, KMUTT.";
+
 export const metadata: Metadata = {
-  title: "Atilak Modetad — Résumé",
-  description:
-    "Résumé for Atilak Modetad — computer vision, 3D point clouds, and applied ML, KMUTT.",
+  metadataBase: new URL("https://atilak-resume.vercel.app"),
+  title,
+  description,
+  openGraph: {
+    title,
+    description,
+    url: "/",
+    siteName: "Atilak Modetad",
+    type: "website",
+  },
 };
 
 export default function RootLayout({ children }: LayoutProps<"/">) {

@@ -1,4 +1,5 @@
 import type { WorkEntryDetail } from "@/content/types";
+import { Flow } from "./Flow";
 import { StatRow } from "./StatRow";
 import { MetricsTable } from "./MetricsTable";
 import styles from "./DetailBody.module.css";
@@ -24,6 +25,7 @@ export function DetailBody({ detail }: { detail: WorkEntryDetail }) {
               ))}
             </ul>
           )}
+          {section.flow && <Flow steps={section.flow} label={section.heading ?? "Pipeline"} />}
         </section>
       ))}
 

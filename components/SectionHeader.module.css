@@ -10,6 +10,7 @@
   letter-spacing: 0.14em;
   color: var(--accent);
   white-space: nowrap;
+  break-after: avoid;
 }
 
 .label::after {

@@ -1,6 +1,7 @@
 import { profile } from "@/content/profile";
 import { Sheet } from "@/components/Sheet";
 import { Header } from "@/components/Header";
+import { Highlights } from "@/components/Highlights";
 import { SectionHeader } from "@/components/SectionHeader";
 import { Entry } from "@/components/Entry";
 import { EducationItem } from "@/components/EducationItem";
@@ -15,6 +16,7 @@ export default function Home() {
       <PrintButton />
       <Sheet>
         <Header profile={profile} />
+        <Highlights items={profile.highlights} />
 
         <section aria-labelledby="pub-label" className={styles.section}>
           <SectionHeader id="pub-label">Publication</SectionHeader>

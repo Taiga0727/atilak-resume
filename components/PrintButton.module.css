@@ -19,6 +19,12 @@
   border-color: var(--accent);
 }
 
+@media (max-width: 640px) {
+  .printBtn {
+    display: none;
+  }
+}
+
 @media print {
   .printBtn {
     display: none;
